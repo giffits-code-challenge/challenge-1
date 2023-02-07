@@ -45,8 +45,10 @@ function itemDetail($item) {
 
 function run()
 {
+    error_log("starting");
     if (!empty($_REQUEST['submit'])) {
         foreach(getItemList() as $i) {
+            // if(!validate($i)) continue;
             ?>
     <div>
         <h2><?=$i?></h2>
@@ -60,6 +62,11 @@ function run()
         // TODO: Someone should find out how to do this in background; Takes too long.
         run2();
     }
+}
+
+// We might need this later, so I just prepared it.
+function validate($item) {
+    return is_int($item);
 }
 
 function run2() {
